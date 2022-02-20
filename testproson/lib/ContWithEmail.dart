@@ -17,16 +17,17 @@ class ContWithEmail extends StatefulWidget {
 }
 
 class _ContWithEmailState extends State<ContWithEmail> {
+  //controller for email and password
   static final emailController = TextEditingController();
   static final passwordController = TextEditingController();
-  //FirebaseAuth firebaseAuth=FirebaseAuth.instance;
-  //final FirebaseFirestore _firestore=FirebaseFirestore.instance;
+  //authentication for google firebase
   final AuthService _authService=AuthService();
 
 
 
-
+  //Sign Up and Sign In texts
   List<String> labels = ['Sign Up','Sign In'];
+  //Sign Up and Sign In page contents
   List<Column> columns = [Column(children: [
     TextField(
       cursorColor: Colors.white,
@@ -39,7 +40,8 @@ class _ContWithEmailState extends State<ContWithEmail> {
       textInputAction: TextInputAction.done,
       controller: passwordController,
       decoration: InputDecoration(hintText: 'Password',suffixIcon:InkWell(
-        onTap: () {},
+        //intentionally empty because of initialization
+          onTap: () {},
 
         child: Icon(
           Icons.visibility,
@@ -52,6 +54,7 @@ class _ContWithEmailState extends State<ContWithEmail> {
       textInputAction: TextInputAction.done,
       controller: passwordController,
       decoration: InputDecoration(hintText: 'Password',suffixIcon:InkWell(
+        //intentionally empty because of initialization
         onTap:() {
 
           } ,
@@ -71,6 +74,7 @@ class _ContWithEmailState extends State<ContWithEmail> {
       ),
       icon: Icon(Icons.lock_open, size: 32),
       label: Text('Continue', style: TextStyle(fontSize: 24)),
+      //intentionally empty because of initialization
       onPressed:() {
       },
     )
@@ -87,6 +91,7 @@ class _ContWithEmailState extends State<ContWithEmail> {
       textInputAction: TextInputAction.done,
       controller: passwordController,
       decoration: InputDecoration(hintText: 'Password',suffixIcon:InkWell(
+        //intentionally empty because of initialization
         onTap:() {
 
         } ,
@@ -100,7 +105,6 @@ class _ContWithEmailState extends State<ContWithEmail> {
     FlatButton(onPressed: () {}, child: Text('Forgot Password', style: TextStyle(
       color: Colors.lightBlue
     ),), ),
-    //Text('Forgot Password?'),
     SizedBox(height: 100),
     ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
@@ -115,14 +119,6 @@ class _ContWithEmailState extends State<ContWithEmail> {
   )];
   int counter=0;
 
- /* @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-
-    super.dispose();
-  }*/
-
 
   @override
   Widget build(BuildContext context) {
@@ -131,6 +127,7 @@ class _ContWithEmailState extends State<ContWithEmail> {
       textInputAction: TextInputAction.done,
       controller: passwordController,
       decoration: InputDecoration(labelText: 'Password',suffixIcon:InkWell(
+        //This part couldn't done at initialization, I rewrite in here
         onTap:() {
             setState(() {
               _obscureText = !_obscureText;
@@ -148,6 +145,7 @@ class _ContWithEmailState extends State<ContWithEmail> {
       icon: Icon(Icons.lock_open,size:32),
       label: Text('Continue',style:TextStyle(fontSize: 24)),
       onPressed: () {
+        //This part couldn't done at initialization, I rewrite in here
         _authService.signIn(emailController.text.trim(), passwordController.text.trim()).then((value) {
           return Navigator.push(context,MaterialPageRoute(builder: (context) => RegisterP()));
         });
@@ -204,11 +202,6 @@ class _ContWithEmailState extends State<ContWithEmail> {
 
         ),
       );
-
-
   }
-
-
-
 }
 

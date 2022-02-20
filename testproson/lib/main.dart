@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'LandingPage.dart';
 
 
-
+// main function, app starts from here
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //disable debug banner
       debugShowCheckedModeBanner: false,
       home: LandingPage(),
     );

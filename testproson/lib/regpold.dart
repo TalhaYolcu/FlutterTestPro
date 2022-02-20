@@ -29,9 +29,7 @@ class _RegisterPageOldState extends State<RegisterPageOld> {
     }
   }
 
-
-
-
+  
   @override
   Widget build(BuildContext context) {
 
